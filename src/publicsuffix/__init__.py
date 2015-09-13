@@ -40,7 +40,7 @@ Public Suffix List module for Python.
 from __future__ import absolute_import
 from __future__ import unicode_literals
 
-import codecs
+import io
 import os.path
 
 
@@ -61,7 +61,7 @@ class PublicSuffixList(object):
         if input_file is None:
             base_dir = os.path.dirname(__file__)
             input_path = os.path.join(base_dir, 'public_suffix_list.dat')
-            input_file = codecs.open(input_path, 'r', 'utf8')
+            input_file = io.open(input_path, 'r', encoding='utf-8')
 
         root = self._build_structure(input_file)
         self.root = self._simplify(root)
